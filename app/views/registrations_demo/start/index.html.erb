@@ -1,0 +1,28 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">CPD Registrations Demos</h1>
+
+    <p>The following demonstrations are for illustration only:</p>
+
+    <h2 class="govuk-heading-2">ECF Registration - School Only</h2>
+
+    <p>This demonstration represents the ECF service where by the School
+      handles the registration process for ECTs</p>
+
+    <%= govuk_link_to "Start", :registrations_demo_ecf_start, button: true %>
+
+    <h2 class="govuk-heading-2">NPQ Registration - Teacher Only</h2>
+
+    <p>This demonstration represents the NPQ service where by the Teacher
+      handles the registration process for themselves</p>
+
+    <%= govuk_link_to "Start", :registrations_demo_npq_start, button: true %>
+
+    <h2 class="govuk-heading-2">CPD Registration - School and Teacher</h2>
+
+    <p>This demonstration represents a combined service where by the School
+      invites the Teacher or ECT to begin their registration process.</p>
+
+    <%= govuk_link_to "Start", :registrations_demo_cpd_start, button: true %>
+  </div>
+</div>

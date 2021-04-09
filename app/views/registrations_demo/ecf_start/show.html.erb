@@ -1,0 +1,33 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">ECF Registration - School Only</h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2>About your Early Career Teacher</h2>
+
+    <p>We need to collect some personal details about the ECT to valid their TRN.</p>
+
+    <%= form_with url: :registrations_demo_ecf_start, method: :post do |f| %>
+      <%= f.govuk_text_field(
+            :trn,
+            width: 20,
+            label: { text: "Teacher Reference Number (TRN)" },
+            link_errors: true) %>
+
+      <%= f.govuk_text_field(
+            :email_address,
+            width: 20,
+            label: { text: "Email address" },
+            link_errors: true) %>
+
+      <p>Their details are protected under the terms of our <a class="govuk-link" href="#">privacy notice</a>.</p>
+
+      <p>Our privacy notice explains how we use their personal data. It is important that the ECT has read this notice before proceeding.</p>
+
+      <%= f.govuk_submit "Continue" %>
+    <% end %>
+  </div>
+</div>

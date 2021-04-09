@@ -39,3 +39,53 @@ en:
               blank: "Enter an email"
               taken: "This email address is already in use"
               invalid: "Enter a valid email address"
+  have_a_degree:
+  degree_options:
+    "yes": "Yes"
+    "no": "No"
+    studying: "I'm studying for a degree"
+    equivalent: "I have an equivalent qualification from another country"
+  answers:
+    identity:
+      name: "Name"
+      email: "Email"
+    date_of_birth:
+      date_of_birth: "Date of birth"
+    has_teacher_id:
+      has_id: "Do you have your previous teacher reference number?"
+    previous_teacher_id:
+      teacher_id: "What is your previous teacher reference number?"
+  activemodel:
+    errors:
+      models:
+        wizard/steps/authenticate:
+          attributes:
+            timed_one_time_password:
+              invalid: Please enter the latest verification code sent to your email address
+              wrong_length: The verification code should be 6 digits
+        npq_training_request/steps/identity:
+          attributes:
+            first_name:
+              blank: "You need to enter your first name"
+              too_long: "You have entered too many characters - you need to enter your first name"
+            last_name:
+              blank: "You need to enter your last name"
+              too_long: "You have entered too many characters - you need to enter your last name"
+            email:
+              invalid: "You need to enter your email address"
+              too_long: "Your email address is too long - you need to enter a valid email address"
+        npq_training_request/steps/has_teacher_id:
+          attributes:
+            has_id:
+              inclusion: "Select yes if you have a previous teacher reference number"
+        npq_training_request/steps/accept_privacy_policy:
+          attributes:
+            accepted_policy_id:
+              invalid_policy: "You must accept the privacy policy in order to talk to a teacher training adviser"
+        npq_training_request/steps/date_of_birth:
+          attributes:
+            date_of_birth:
+              blank: "You need to enter your date of birth"
+              on_or_before: "You must be 18 years or older to use this service"
+              on_or_after: "You must be less than 70 years old"
+              invalid: "You did not enter a valid date of birth"

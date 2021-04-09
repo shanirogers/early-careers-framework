@@ -147,4 +147,32 @@ Rails.application.routes.draw do
   resource :school_search, only: %i[show create], path: "school-search", controller: :school_search
 
   root "registrations/start#index"
+
+  get "/demos/not_available", to: "demos/demo_one#not_available"
+
+  namespace :demos, path: "/demos" do
+    resources :demo_one, path: "/one", only: %i[index show update] do
+      collection do
+        get :completed
+      end
+    end
+
+    resources :demo_two, path: "/two", only: %i[index show update] do
+      collection do
+        get :completed
+      end
+    end
+
+    resources :demo_three, path: "/three", only: %i[index show update] do
+      collection do
+        get :completed
+      end
+    end
+
+    resources :demo_four, path: "/four", only: %i[index show update] do
+      collection do
+        get :completed
+      end
+    end
+  end
 end
