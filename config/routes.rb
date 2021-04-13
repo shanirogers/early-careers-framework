@@ -151,27 +151,11 @@ Rails.application.routes.draw do
   get "/demos/not_available", to: "demos/demo_one#not_available"
 
   namespace :demos, path: "/demos" do
+    root to: "start#index"
     resources :demo_one, path: "/one", only: %i[index show update] do
       collection do
         get :completed
-      end
-    end
-
-    resources :demo_two, path: "/two", only: %i[index show update] do
-      collection do
-        get :completed
-      end
-    end
-
-    resources :demo_three, path: "/three", only: %i[index show update] do
-      collection do
-        get :completed
-      end
-    end
-
-    resources :demo_four, path: "/four", only: %i[index show update] do
-      collection do
-        get :completed
+        get :resend_verification
       end
     end
   end

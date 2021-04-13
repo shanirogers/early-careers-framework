@@ -1,0 +1,9 @@
+<h1 class="govuk-heading-xl">Updated name</h1>
+
+<p>If you've changed your name and want to use it for work, and any NPQ certificates gained, it must also be changed on the Database of Qualified Teachers (DQT).</p>
+
+<%= f.govuk_radio_buttons_fieldset(:has_updated_dqt_name, legend: { text: 'Have you updated your name on the DQT?'} ) do %>
+  <%= f.govuk_radio_button :has_updated_dqt_name, "yes", label: { text: 'Yes, I have updated my name' }, link_errors: true %>
+  <%= f.govuk_radio_button :has_updated_dqt_name, "no", label: { text: 'No, I have not updated my name' } %>
+  <%= f.govuk_radio_button :has_updated_dqt_name, "not_sure", label: { text: 'Not sure' } %>
+<% end %>

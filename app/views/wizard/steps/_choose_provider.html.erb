@@ -1,0 +1,17 @@
+<h1 class="govuk-heading-xl">Choose your Provider</h1>
+
+<%= f.govuk_radio_buttons_fieldset(:chosen_provider, legend: { text: 'Which Provider would you like to apply to?' } ) do %>
+  <%= f.govuk_radio_button :chosen_provider, f.object.class::OPTIONS[:abc_training_ltd], label: { text: 'ABC Training Ltd' }, link_errors: true %>
+  <%= f.govuk_radio_button :chosen_provider, f.object.class::OPTIONS[:cyberdyne_inc], label: { text: 'Cyberdyne Inc' } %>
+  <%= f.govuk_radio_button :chosen_provider, f.object.class::OPTIONS[:oscorp], label: { text: 'OsCorp' } %>
+  <%= f.govuk_radio_button :chosen_provider, f.object.class::OPTIONS[:tyrell_corporation], label: { text: 'Tyrell Corporation' } %>
+  <%= f.govuk_radio_button :chosen_provider, f.object.class::OPTIONS[:umbrella_corporation], label: { text: 'Umbrella Corporation' } %>
+  <%= f.govuk_radio_button :chosen_provider, f.object.class::OPTIONS[:weyland_yutani], label: { text: 'Weyland-Yutani' } %>
+<% end %>
+
+
+
+
+
+
+

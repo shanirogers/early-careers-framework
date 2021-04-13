@@ -53,7 +53,7 @@ module Wizard
     def skipped?
       return false unless optional?
 
-      @store.fetch(attribute_names, source: :crm).values.all?(&:present?)
+      @store.fetch(attribute_names, source: :wizard).values.all?(&:present?)
     end
 
     def optional?
@@ -77,7 +77,7 @@ module Wizard
   private
 
     def attributes_from_crm
-      @store.fetch attributes.keys, source: :crm
+      @store.fetch attributes.keys, source: :wizard
     end
 
     def attributes_from_store

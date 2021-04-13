@@ -1,0 +1,23 @@
+<h1 class="govuk-heading-xl">Teacher reference number</h1>
+
+<p>Your teacher reference number (TRN) is used to check you're eligible to study for a national professional qualification (NPQ).</p>
+
+<details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      What is a teacher reference number?
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <p>A teacher reference number (TRN) is a unique ID that allows us to check you are a teacher.</p>
+
+    <p>If you don’t know what your teacher reference number (TRN) is, this can usually be found on your payslip, teachers’ pension documentation or teacher training records.</p>
+
+    <p>The TRN has previously been known as a QTS, GTC, DfE, DfES or DCSF number  </p>
+  </div>
+</details>
+
+<%= f.govuk_radio_buttons_fieldset(:has_teacher_ref_number, legend: { text: 'Do you know your teacher reference number (TRN)?'} ) do %>
+  <%= f.govuk_radio_button :has_teacher_ref_number, true, label: { text: 'Yes, I know my TRN' }, link_errors: true %>
+  <%= f.govuk_radio_button :has_teacher_ref_number, false, label: { text: 'No, I do not know my TRN' } %>
+<% end %>

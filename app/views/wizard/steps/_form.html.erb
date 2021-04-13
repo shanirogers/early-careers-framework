@@ -1,21 +1,16 @@
-<div role="navigation">
-  <div class="govuk-width-container">
-    <p>
-      <%= back_link step_path(wizard.previous_key) if wizard.previous_key %>
-    </p>
-  </div>
-</div>
 
-<main class="govuk-main-wrapper no-margin" id="main-content" role="main">
-  <div class="govuk-width-container">
-    <%= govuk_form_for current_step, url: step_path do |f| %>
-      <%= f.govuk_error_summary %>
+<% content_for :before_content, back_link(step_path(wizard.previous_key)) if wizard.previous_key %>
 
-      <%= render "wizard/steps/" + current_step.key, current_step: current_step, f: f %>
+<% govuk_back_link text: "Back", href: new_admin_administrator_path(continue: true) %>
 
-      <% if wizard.step_can_proceed? %>
-        <%= f.govuk_submit(wizard.last_step? ? "Complete" : "Continue") %>
-      <% end %>
+<div class="govuk-width-container">
+  <%= govuk_form_for current_step, url: step_path do |f| %>
+    <%= f.govuk_error_summary %>
+
+    <%= render "wizard/steps/" + current_step.key, current_step: current_step, f: f %>
+
+    <% if wizard.step_can_proceed? %>
+      <%= f.govuk_submit(wizard.last_step? ? "Complete" : "Continue") %>
     <% end %>
-  </div>
-</main>
+  <% end %>
+</div>

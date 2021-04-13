@@ -5,13 +5,22 @@ module Demos
     include ::Wizard::ApiClientSupport
 
     self.steps = [
-      ::Wizard::Steps::Identity,
-      ::Wizard::Steps::HasTeacherId,
-      ::Wizard::Steps::TeacherId,
-      ::Wizard::Steps::DateOfBirth,
-      ::Wizard::Steps::NationalInsuranceNumber,
+      ::Wizard::Steps::CanShareChoices,
+      ::Wizard::Steps::HasTeacherRefNumber,
+      ::Wizard::Steps::DoNotKnowTrn,
+      ::Wizard::Steps::HasChangedName,
+      ::Wizard::Steps::HasUpdatedDqtName,
+      ::Wizard::Steps::UnsureOfDqtName,
+      ::Wizard::Steps::NotUpdatedDqtName,
+      ::Wizard::Steps::ChangeDqtName,
+      ::Wizard::Steps::QualifiedTeacherCheck,
+      ::Wizard::Steps::ContactDetails,
+      ::Wizard::Steps::VerifyContactDetails,
+      ::Wizard::Steps::ChooseNpq,
+      ::Wizard::Steps::ChooseProvider,
+      ::Wizard::Steps::ConfirmSchool,
+      ::Wizard::Steps::ChooseSchool,
       ::Wizard::Steps::ReviewAnswers,
-      ::Wizard::Steps::AcceptPrivacyPolicy,
     ].freeze
 
     def time_zone

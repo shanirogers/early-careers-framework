@@ -1,0 +1,9 @@
+<h1 class="govuk-heading-xl">Find your school</h1>
+
+<p>We need this information to check if you can access Department for Education funding.</p>
+
+<%= f.govuk_text_field :school_name,
+                       width: 20,
+                       label: { text: "School location", style: "font-weight: 700" },
+                       hint: { text: 'Enter town, city or postcode' } %>
+

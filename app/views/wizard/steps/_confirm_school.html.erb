@@ -1,0 +1,13 @@
+<h1 class="govuk-heading-xl">Your school</h1>
+
+<p>Our records show that you are currently teaching at:</p>
+
+<p><strong>St Mark's Church of England Junior School</strong><br>
+  Robert Burns Avenue, Benhall,<br>
+  Cheltenham, Gloucestershire,<br>
+  GL51 6NU</p>
+
+<%= f.govuk_radio_buttons_fieldset(:confirm_school, legend: { text: 'Are you currently teaching at this school?'} ) do %>
+  <%= f.govuk_radio_button :confirm_school, true, label: { text: 'Yes, I am currently teaching at St Mark\'s Church of England Junior School' }, link_errors: true %>
+  <%= f.govuk_radio_button :confirm_school, false, label: { text: 'No, I am teaching at a different school' } %>
+<% end %>

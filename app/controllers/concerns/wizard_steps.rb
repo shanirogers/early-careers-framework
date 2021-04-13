@@ -31,6 +31,11 @@ module WizardSteps
     # current_step is loaded via before_action
   end
 
+  def resend_verification
+    # GetIntoTeachingApiClient::CandidatesApi.new.create_candidate_access_token(request)
+    redirect_to authenticate_path(verification_resent: true)
+  end
+
 private
 
   def load_wizard

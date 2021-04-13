@@ -1,0 +1,10 @@
+<h1 class="govuk-heading-xl">Choose your NPQ</h1>
+
+<%= f.govuk_radio_buttons_fieldset(:chosen_npq, legend: { text: 'Which NPQ would you like to apply for?' } ) do %>
+  <%= f.govuk_radio_button :chosen_npq, f.object.class::OPTIONS[:npq_senior_leadership], label: { text: 'NPQ Senior Leadership' }, link_errors: true %>
+  <%= f.govuk_radio_button :chosen_npq, f.object.class::OPTIONS[:npq_leading_teacher_development], label: { text: 'NPQ Leading Teacher Development' } %>
+  <%= f.govuk_radio_button :chosen_npq, f.object.class::OPTIONS[:npq_executive_leadership], label: { text: 'NPQ Executive Leadership' } %>
+  <%= f.govuk_radio_button :chosen_npq, f.object.class::OPTIONS[:npq_leading_teaching], label: { text: 'NPQ Leading Teaching' } %>
+  <%= f.govuk_radio_button :chosen_npq, f.object.class::OPTIONS[:npq_headship], label: { text: 'NPQ Headship' } %>
+  <%= f.govuk_radio_button :chosen_npq, f.object.class::OPTIONS[:npq_leading_behaviour_and_culture], label: { text: 'NPQ Leading Behaviour and Culture' } %>
+<% end %>

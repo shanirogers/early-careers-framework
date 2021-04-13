@@ -1,0 +1,16 @@
+<%= f.govuk_check_boxes_fieldset :can_share_choices,
+                                 legend: {
+                                   text: "Share choices with training provider",
+                                   size: "xl"
+                                 } do %>
+  <p>You must share your NPQ choice(s) with your training provider.</p>
+
+  <p>If you don't share the details you cannot progress with your NPQ.</p>
+
+  <%= f.govuk_check_box :can_share_choices,
+                        "Yes",
+                        multiple: false,
+                        required: true,
+                        link_errors: true,
+                        label: { text: "Do you agree that your choices can be shared with your training provider?"} %>
+<% end %>

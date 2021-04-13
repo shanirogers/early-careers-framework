@@ -1,0 +1,13 @@
+<h1 class="govuk-heading-xl">Name not updated</h1>
+
+<p>If your name has not been updated and does not match the DQT, you have two options:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>use your old name to register with the service</li>
+  <li>change your name on the DQT</li>
+</ul>
+
+<%= f.govuk_radio_buttons_fieldset(:not_updated_dqt_name, legend: { text: 'Have you updated your name on the DQT?'} ) do %>
+  <%= f.govuk_radio_button :not_updated_dqt_name, "change_name", label: { text: 'Change my name on the DQT' }, link_errors: true %>
+  <%= f.govuk_radio_button :not_updated_dqt_name, "old_name", label: { text: 'Register with my old name' } %>
+<% end %>

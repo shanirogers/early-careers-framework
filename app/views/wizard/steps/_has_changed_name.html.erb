@@ -1,0 +1,10 @@
+<h1 class="govuk-heading-xl">Name changes</h1>
+
+<p>Your name must match the name held in the Database of Qualified Teachers (DQT) to confirm you can take an NPQ.</p>
+
+<p>If it doesn't match, you cannot continue with an NPQ.</p>
+
+<%= f.govuk_radio_buttons_fieldset(:has_changed_name, legend: { text: 'Has your name changed since you became a qualified teacher?'} ) do %>
+  <%= f.govuk_radio_button :has_changed_name, true, label: { text: 'Yes, I have changed my name' }, link_errors: true %>
+  <%= f.govuk_radio_button :has_changed_name, false, label: { text: 'No, I have the same name' } %>
+<% end %>

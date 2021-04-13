@@ -130,7 +130,7 @@ module Wizard
     def prepopulate_store(response, auth_method)
       hash = response.to_hash.transform_keys { |k| k.to_s.underscore }
       hash["auth_method"] = auth_method
-      @store.persist_crm(hash)
+      @store.persist_wizard(hash)
     end
 
     def all_steps
