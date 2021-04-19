@@ -76,6 +76,9 @@ platform :mswin, :mingw, :x64_mingw do
   gem "wdm", ">= 0.1.0"
 end
 
+gem "open_api-rswag-api"
+gem "open_api-rswag-ui"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: %i[mri mingw x64_mingw]
@@ -94,6 +97,8 @@ group :development, :test do
   gem "database_cleaner-active_record"
 
   gem "dotenv-rails", ">= 2.7.6"
+
+  gem "open_api-rswag-specs"
 
   gem "factory_bot_rails", ">= 6.1.0"
 end
