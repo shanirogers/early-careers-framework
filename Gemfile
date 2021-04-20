@@ -72,12 +72,21 @@ gem "daemons"
 gem "delayed_cron_job"
 gem "delayed_job_active_record"
 
+# Custom attributes for endpoints
+gem "active_model_serializers"
+
+gem "pagy", "~> 3.12"
+
+# JSON:API Ruby Client
+gem "jsonapi-rails"
+gem "jsonapi-rb"
+
 platform :mswin, :mingw, :x64_mingw do
   gem "wdm", ">= 0.1.0"
 end
 
-gem "open_api-rswag-api"
-gem "open_api-rswag-ui"
+gem "rswag-api"
+gem "rswag-ui"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -98,7 +107,7 @@ group :development, :test do
 
   gem "dotenv-rails", ">= 2.7.6"
 
-  gem "open_api-rswag-specs"
+  gem "rswag-specs"
 
   gem "factory_bot_rails", ">= 6.1.0"
 end

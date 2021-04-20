@@ -1,0 +1,108 @@
+---
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Manage Teachers Professional Development API
+  contact:
+    name: DfE Continuing Professional Development
+    email: support-continuing-professional-development@digital.education.gov.uk
+  description: "API for DfE's Manage Teachers Professional Development service."
+servers:
+  - url: https://api-manage-teachers-professional-development.education.gov.uk/api/{version}
+    description: "Production url."
+    variables:
+      version:
+        enum:
+          - v1
+        default: v1
+components:
+  schemas:
+    Sort:
+      type: array
+      example: "participant.name,name"
+      description: "This schema is used to sort a collection."
+      items:
+        type: string
+        example: "name"
+        description: "A comma delimited string of fields to sort the collection by."
+    JSONAPI:
+      description: "This returns the version of JSON API in use."
+      type: object
+      required:
+        - version
+      properties:
+        version:
+          type: string
+          example: "1.0"
+    ParticipantResource:
+      description: "This schema provides metadata about a participant."
+      type: object
+      required:
+        - id
+        - type
+        - attributes
+      properties:
+        id:
+          type: string
+          example: "14554"
+        type:
+          type: string
+          example: "participants"
+        attributes:
+          $ref: "#/components/schemas/ParticipantAttributes"
+    ParticipantListResponse:
+      description: "This schema is used to return a collection of participants."
+      type: object
+      required:
+        - data
+        - jsonapi
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/ParticipantResource"
+        jsonapi:
+          $ref: "#/components/schemas/JSONAPI"
+    ParticipantSingleResponse:
+      description: "This schema is used to return a single participant."
+      type: object
+      required:
+        - data
+        - jsonapi
+      properties:
+        data:
+          $ref: "#/components/schemas/ParticipantResource"
+        jsonapi:
+          $ref: "#/components/schemas/JSONAPI"
+    Resource:
+      anyOf:
+        - $ref: "#/components/schemas/ParticipantResource"
+      discriminator:
+        propertyName: type
+    StandardErrorResponse:
+      description: "This schema is used to return a collection of generic application errors"
+      type: object
+      required:
+        - errors
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: "#/components/schemas/StandardErrorAttributes"
+    StandardErrorAttributes:
+      description: "This schema is used to describe a generic application error."
+      type: object
+      properties:
+        status:
+          type: integer
+          description: "Returns the http status code associated with the error."
+          example: 400
+        title:
+          type: string
+          description: "A generic title for the type of error."
+          example: "BAD REQUEST"
+        detail:
+          type: string
+          description: "A more detailed description of what could have caused the error."
+          example: "The request could not be fulfilled due to some incorrect syntax of the request."
+

@@ -1,0 +1,405 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Manage Teachers Professional Development API",
+    "contact": {
+      "name": "DfE Continuing Professional Development",
+      "email": "support-continuing-professional-development@digital.education.gov.uk"
+    },
+    "description": "API for DfE's Manage Teachers Professional Development service."
+  },
+  "servers": [
+    {
+      "url": "https://api-manage-teachers-professional-development.education.gov.uk/api/{version}",
+      "description": "Production url.",
+      "variables": {
+        "version": {
+          "enum": [
+            "v1"
+          ],
+          "default": "v1"
+        }
+      }
+    }
+  ],
+  "components": {
+    "schemas": {
+      "400ErrorResponse": {
+        "description": "This schema is used to return a 400 application error",
+        "type": "object",
+        "required": [
+          "errors"
+        ],
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "description": "Returns the http status code associated with the error.",
+                  "example": 400
+                },
+                "title": {
+                  "type": "string",
+                  "description": "A generic title for the type of error.",
+                  "example": "BAD REQUEST"
+                },
+                "detail": {
+                  "type": "string",
+                  "description": "A more detailed description of what could have caused the error.",
+                  "example": "The request could not be fulfilled due to some incorrect syntax of the request."
+                }
+              }
+            }
+          }
+        }
+      },
+      "404ErrorResponse": {
+        "description": "This schema is used to return a 404 application error",
+        "type": "object",
+        "required": [
+          "errors"
+        ],
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "description": "Returns the http status code associated with the error.",
+                  "example": 404
+                },
+                "title": {
+                  "type": "string",
+                  "description": "A generic title for the type of error.",
+                  "example": "NOT_FOUND"
+                },
+                "detail": {
+                  "type": "string",
+                  "description": "A more detailed description of what could have caused the error.",
+                  "example": "The requested resource could not be found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "JSONAPI": {
+        "description": "This returns the version of JSON API in use.",
+        "type": "object",
+        "required": [
+          "version"
+        ],
+        "properties": {
+          "version": {
+            "type": "string",
+            "example": "1.0"
+          }
+        }
+      },
+      "Pagination": {
+        "description": "This schema used to paginate through a collection.",
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "description": "The page number to paginate to in the collection. If no value is specified it defaults to the first page.",
+            "example": 3
+          },
+          "per_page": {
+            "type": "integer",
+            "description": "The number items to display on a page. Defaults to 100. Maximum is 500, if the value is greater that the maximum allowed it will fallback to 500.",
+            "example": 10
+          }
+        }
+      },
+      "ParticipantAttributes": {
+        "description": "This schema is used to describe a participant.",
+        "type": "object",
+        "required": [
+          "name",
+          "email"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the training participant.",
+            "example": "Donald Duck"
+          },
+          "email": {
+            "type": "string",
+            "description": "The participant's email address.",
+            "example": "donald.duck@example.com"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp of when this participant was created.",
+            "example": "2019-06-13T10:44:31Z"
+          },
+          "changed_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date-time timestamp of when this participant or any of its related data changed.",
+            "example": "2019-06-13T10:44:31Z"
+          }
+        }
+      },
+      "ParticipantFilter": {
+        "type": "object",
+        "example": "",
+        "description": "This schema is used to search within collections to return more specific results.",
+        "properties": {
+          "updated_since": {
+            "description": "Return participants that have been updated since the date (ISO 8601 date format)",
+            "type": "string",
+            "example": "2020-11-13T11:21:55Z"
+          }
+        }
+      },
+      "ParticipantListResponse": {
+        "description": "This schema is used to return a collection of participants.",
+        "type": "object",
+        "required": [
+          "data",
+          "jsonapi"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParticipantResource"
+            }
+          },
+          "jsonapi": {
+            "$ref": "#/components/schemas/JSONAPI"
+          }
+        }
+      },
+      "ParticipantResource": {
+        "description": "This schema provides metadata about a participant.",
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "attributes"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "14554"
+          },
+          "type": {
+            "type": "string",
+            "example": "participants"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/ParticipantAttributes"
+          }
+        }
+      },
+      "ParticipantSingleResponse": {
+        "description": "This schema is used to return a single participant.",
+        "type": "object",
+        "required": [
+          "data",
+          "jsonapi"
+        ],
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ParticipantResource"
+          },
+          "jsonapi": {
+            "$ref": "#/components/schemas/JSONAPI"
+          }
+        }
+      },
+      "Resource": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/ParticipantResource"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "type"
+        }
+      },
+      "Sort": {
+        "type": "array",
+        "example": "participant.name,name",
+        "description": "This schema is used to sort a collection.",
+        "items": {
+          "type": "string",
+          "example": "name",
+          "description": "A comma delimited string of fields to sort the collection by."
+        }
+      },
+      "StandardErrorAttributes": {
+        "description": "This schema is used to describe a generic application error.",
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "description": "Returns the http status code associated with the error.",
+            "example": 400
+          },
+          "title": {
+            "type": "string",
+            "description": "A generic title for the type of error.",
+            "example": "BAD REQUEST"
+          },
+          "detail": {
+            "type": "string",
+            "description": "A more detailed description of what could have caused the error.",
+            "example": "The request could not be fulfilled due to some incorrect syntax of the request."
+          }
+        }
+      },
+      "StandardErrorResponse": {
+        "description": "This schema is used to return a collection of generic application errors",
+        "type": "object",
+        "required": [
+          "errors"
+        ],
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StandardErrorAttributes"
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/participants": {
+      "get": {
+        "summary": "Returns participants for the specified Lead Provider.",
+        "operationId": "api_v1_participant_index",
+        "tags": [
+          "participant"
+        ],
+        "parameters": [
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/Sort"
+            },
+            "style": "form",
+            "explode": false,
+            "required": false,
+            "example": "name",
+            "description": "Field(s) to sort the participants by."
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ParticipantFilter"
+            },
+            "style": "deepObject",
+            "explode": true,
+            "required": false,
+            "description": "Refine participants to return.",
+            "example": {
+              "updated_since": "2020-11-13T11:21:55Z"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/Pagination"
+            },
+            "style": "deepObject",
+            "explode": true,
+            "required": false,
+            "example": {
+              "page": 2,
+              "per_page": 10
+            },
+            "description": "Pagination options to navigate through the collection."
+          }
+        ],
+        "x-curl-examples": [
+          {
+            "description": "Get all participants",
+            "command": "curl -X GET https://api-manage-teachers-professional-development.education.gov.uk/api/v1/participants"
+          },
+          {
+            "description": "Get second page of participants",
+            "command": "curl -X GET https://api-manage-teachers-professional-development.education.gov.uk/api/v1/participants?page[page]=2"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Collection of participants.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParticipantListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/participants/{participant_id}": {
+      "get": {
+        "summary": "Returns the specified participant.",
+        "operationId": "api_v1_participant_show",
+        "tags": [
+          "participant"
+        ],
+        "parameters": [
+          {
+            "name": "participant_id",
+            "in": "path",
+            "required": true,
+            "description": "The unique code of the participant.",
+            "example": "T92",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "x-curl-examples": [
+          {
+            "description": "Get a specific participant",
+            "command": "curl -X GET https://api-manage-teachers-professional-development.education.gov.uk/api/v1/participants/B20"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The participant.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParticipantSingleResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The non existent participant.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

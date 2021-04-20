@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => "/api-docs"
+  mount Rswag::Api::Engine => "/api-docs"
   devise_for :users, skip: %i[registrations confirmations], controllers: {
     sessions: "users/sessions",
   }
@@ -23,6 +25,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :school_search, only: %i[index]
+
+    namespace :v1 do
+      resources :participants, only: %i[index show]
+    end
   end
 
   namespace :demo do

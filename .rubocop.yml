@@ -27,3 +27,8 @@ Rails/UnknownEnv:
 
 Naming/VariableNumber:
   EnforcedStyle: snake_case
+
+Naming/FileName:
+  Exclude:
+    - config/initializers/rswag-ui.rb
+    - config/initializers/rswag-api.rb
