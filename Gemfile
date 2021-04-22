@@ -107,9 +107,16 @@ group :development, :test do
 
   gem "dotenv-rails", ">= 2.7.6"
 
+  # Make diffs of Ruby objects much more readable
+  gem "super_diff"
+
+  # Allow us to freeze time in tests
+  gem "timecop"
+
   gem "rswag-specs"
 
   gem "factory_bot_rails", ">= 6.1.0"
+  gem "faker"
 end
 
 group :development do

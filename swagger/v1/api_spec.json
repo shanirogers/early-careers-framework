@@ -142,7 +142,7 @@
             "description": "Timestamp of when this participant was created.",
             "example": "2019-06-13T10:44:31Z"
           },
-          "changed_at": {
+          "updated_at": {
             "type": "string",
             "format": "date-time",
             "description": "Date-time timestamp of when this participant or any of its related data changed.",

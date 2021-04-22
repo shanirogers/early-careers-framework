@@ -81,6 +81,7 @@ GEM
     ar-uuid (0.2.1)
       activerecord
     ast (2.4.1)
+    attr_extras (6.2.4)
     bcrypt (3.1.16)
     bindex (0.8.1)
     blueprinter (0.25.2)
@@ -224,6 +225,8 @@ GEM
     parallel (1.20.1)
     parser (3.0.0.0)
       ast (~> 2.4.1)
+    patience_diff (1.1.0)
+      trollop (~> 1.16)
     pg (1.2.3)
     pry (0.13.1)
       coderay (~> 1.1)
@@ -380,7 +383,13 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    super_diff (0.6.1)
+      attr_extras (>= 6.2.4)
+      diff-lcs
+      patience_diff
     thor (1.1.0)
+    timecop (0.9.4)
+    trollop (1.16.2)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2020.6)
@@ -470,6 +479,8 @@ DEPENDENCIES
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
+  super_diff
+  timecop
   tzinfo-data
   view_component
   wdm (>= 0.1.0)

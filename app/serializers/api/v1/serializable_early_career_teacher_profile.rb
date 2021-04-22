@@ -5,7 +5,7 @@ module Api
     class SerializableEarlyCareerTeacherProfile < JSONAPI::Serializable::Resource
       type "early_career_teacher_profile"
 
-      attribute :name do
+      attribute :full_name do
         @object.user.full_name
       end
 

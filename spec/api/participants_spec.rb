@@ -42,14 +42,6 @@ describe "API" do
       response "200", "Collection of participants." do
         schema "$ref": "#/components/schemas/ParticipantListResponse"
 
-        after do |example|
-          example.metadata[:response][:content] = {
-            "application/json" => {
-              example: JSON.parse(response.body, symbolize_names: true),
-            },
-          }
-        end
-
         run_test!
       end
     end
@@ -71,7 +63,8 @@ describe "API" do
                    command: "curl -X GET https://api-manage-teachers-professional-development.education.gov.uk/api/v1/participants/B20"
 
       response "200", "The participant." do
-        let(:participant) { create(:early_career_teacher_profile) }
+        let(:user) { create(:user, full_name: "Donald Duck", email: "donald.duck@example.com") }
+        let(:participant) { create(:early_career_teacher_profile, user: user) }
         let(:participant_id) { participant.id }
 
         schema "$ref": "#/components/schemas/ParticipantSingleResponse"

@@ -74,6 +74,8 @@ RSpec.configure do |config|
   end
 end
 
+Faker::Config.locale = "en-GB"
+
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec

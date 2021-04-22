@@ -2,10 +2,10 @@
 description: "This schema is used to describe a participant."
 type: object
 required:
-  - name
+  - full_name
   - email
 properties:
-  name:
+  full_name:
     type: string
     description: "The name of the training participant."
     example: "Donald Duck"
@@ -18,7 +18,7 @@ properties:
     format: date-time
     description: "Timestamp of when this participant was created."
     example: "2019-06-13T10:44:31Z"
-  changed_at:
+  updated_at:
     type: string
     format: date-time
     description: >-

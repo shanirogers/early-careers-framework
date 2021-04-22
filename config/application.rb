@@ -43,7 +43,10 @@ module GovukRailsBoilerplate
     end
 
     config.exceptions_app = routes
-    config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :forbidden
+    config.action_dispatch.rescue_responses = {
+      "Pundit::NotAuthorizedError" => :forbidden,
+      "Pagy::OverflowError" => :bad_request,
+    }
 
     config.middleware.use Rack::Deflater
   end

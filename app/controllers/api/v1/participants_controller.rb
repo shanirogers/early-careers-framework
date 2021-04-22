@@ -6,7 +6,8 @@ module Api
       def index
         render jsonapi: paginate(participants),
                include: params[:include],
-               class: Api::V1::SerializerService.call, fields: fields
+               class: Api::V1::SerializerService.call,
+               fields: fields
       end
 
       def show
@@ -14,27 +15,29 @@ module Api
         participant = EarlyCareerTeacherProfile.find(uuid)
 
         render jsonapi: participant,
-               class: Api::V1::SerializerService.call,
                include: params[:include],
+               class: Api::V1::SerializerService.call,
                fields: fields
       end
 
     private
 
       def updated_since
-        @updated_since ||= params.dig(:filter, :updated_since)
+        @updated_since ||= params[:updated_since]
       end
 
       def participants
         @participants = EarlyCareerTeacherProfile
         @participants = if sort_by_participant_ascending?
                           @participants.by_name_ascending
-                        else
+                        elsif sort_by_participant_descending?
                           @participants.by_name_descending
+                        else
+                          @participants.order(:updated_at || :created_at)
                         end
 
         if updated_since.present?
-          @participants = @participants.changed_since(updated_since)
+          @participants = @participants.updated_since(updated_since)
         end
 
         @participants
@@ -45,7 +48,7 @@ module Api
       end
 
       def sort_by_participant_ascending?
-        sort_field.include?("name") || !sort_by_participant_descending?
+        sort_field.include?("name")
       end
 
       def sort_by_participant_descending?
