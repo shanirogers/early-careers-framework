@@ -23,7 +23,10 @@ describe "Participants API", type: :request do
         .encode_credentials("foo")
     end
 
-    let(:get_index) { get "/api/v1/participants", headers: { "HTTP_AUTHORIZATION" => credentials } }
+    let(:get_index) do
+      get "/api/v1/participants",
+          headers: { "HTTP_AUTHORIZATION" => credentials }
+    end
 
     context "without updated_since parameter" do
       before do
@@ -55,7 +58,7 @@ describe "Participants API", type: :request do
         expect(response).to have_http_status(:success)
       end
 
-      xit "returns http unauthorised" do
+      it "returns http unauthorised" do
         get "/api/v1/participants",
             headers: { "HTTP_AUTHORIZATION" => unauthorized_credentials }
         expect(response).to have_http_status(:unauthorized)

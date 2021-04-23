@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class ParticipantsController < Api::V1::ApplicationController
+    class ParticipantsController < Api::V1::ApiController
       def index
         render jsonapi: paginate(participants),
                include: params[:include],
