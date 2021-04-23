@@ -3,8 +3,10 @@
 class CookiesController < ApplicationController
   before_action :set_cookie_form, only: :show
 
+  BACK_TO_SESSION_KEY = "_cookies_back_to"
+
   def show
-    @backlink = session[:return_to]
+    @backlink = recognize_back_path
   end
 
   def update
@@ -30,6 +32,17 @@ class CookiesController < ApplicationController
   end
 
 private
+
+  def recognize_back_path
+    referer = Rails.application.routes.recognize_path(request.referer)
+    if referer[:controller] == controller_name
+      session[BACK_TO_SESSION_KEY]
+    else
+      session[BACK_TO_SESSION_KEY] = request.referer || root_path
+    end
+  rescue ActionController::RoutingError
+    session[BACK_TO_SESSION_KEY] = request.referer
+  end
 
   def set_cookie_form
     @cookies_form = CookiesForm.new(analytics_consent: cookies[:cookie_consent_1])

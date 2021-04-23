@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   default_form_builder GOVUKDesignSystemFormBuilder::FormBuilder
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :previous_url_for_cookies_page
   before_action :check_privacy_policy_accepted
 
   def check
@@ -12,14 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
 private
-
-  def previous_url_for_cookies_page
-    if request.get? && controller_name == "cookies"
-      session[:return_to] ||= root_url
-    elsif request.get?
-      session[:return_to] = request.original_url
-    end
-  end
 
   def after_sign_in_path_for(user)
     stored_location_for(user) || helpers.profile_dashboard_path(user)

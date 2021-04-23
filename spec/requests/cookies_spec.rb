@@ -24,33 +24,33 @@ RSpec.describe "Cookies API", type: :request do
       expect(response.cookies["cookie_consent_1"]).to eq("off")
     end
 
-    it "does not affect session[:return_to] variable" do
-      get cookies_path
+    it "does not affect back link session variable" do
+      get cookies_path, headers: { "HTTP_REFERER" => "/privacy-policy" }
 
       headers = { "ACCEPT" => "application/json", "CONTENT_TYPE" => "application/json" }
       put "/cookies", params: { "cookies_form": { "analytics_consent": "on" } }.to_json, headers: headers
 
-      expect(session[:return_to]).to eq("http://www.example.com/")
+      expect(back_link).to eq("/privacy-policy")
     end
   end
 
   describe "GET /cookies" do
-    context "from a different page" do
-      let!(:policy) { create :privacy_policy }
-
-      it "sets the session[:return_to] as previous url" do
-        get privacy_policy_path
-        expect(session[:return_to]).to eq("http://www.example.com/privacy-policy")
-        get cookies_path
-        expect(session[:return_to]).to eq("http://www.example.com/privacy-policy")
+    context "from a different internal page" do
+      it "sets the back to session variable as previous url" do
+        get cookies_path, headers: { "HTTP_REFERER" => "/privacy-policy" }
+        expect(back_link).to eq("/privacy-policy")
       end
     end
 
-    context "from the same page with empty session" do
-      it "sets the session[:return_to] as root url" do
+    context "from the same controller with empty session" do
+      it "sets the back link session variable as root url" do
         get cookies_path
-        expect(session[:return_to]).to eq("http://www.example.com/")
+        expect(back_link).to eq("/")
       end
     end
+  end
+
+  def back_link
+    session[CookiesController::BACK_TO_SESSION_KEY]
   end
 end
