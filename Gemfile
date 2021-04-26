@@ -17,7 +17,8 @@ gem "pundit"
 gem "kaminari", ">= 1.2.0"
 
 # Adds health check functionality
-gem "health_check", github: "/ianheggie/health_check", ref: "0b799ead604f900ed50685e9b2d469cd2befba5b"
+
+gem "health_check", github: "ianheggie/health_check", ref: "0b799ead604f900ed50685e9b2d469cd2befba5b"
 
 # Cleaner logs, one line per request
 gem "lograge"
@@ -72,6 +73,9 @@ gem "savon", "~> 2.12", ">= 2.12.1"
 gem "daemons"
 gem "delayed_cron_job"
 gem "delayed_job_active_record"
+
+# Acts as State Machine for Participant events
+gem "aasm"
 
 # OpenApi Swagger
 gem "open_api-rswag-api"
