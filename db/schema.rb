@@ -111,6 +111,16 @@ ActiveRecord::Schema.define(version: 2021_04_30_095331) do
     t.index ["school_id"], name: "index_icp_schools_on_schools"
   end
 
+  create_table "lead_provider_api_tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "lead_provider_id", null: false
+    t.string "hashed_token", null: false
+    t.datetime "last_used_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashed_token"], name: "index_lead_provider_api_tokens_on_hashed_token", unique: true
+    t.index ["lead_provider_id"], name: "index_lead_provider_api_tokens_on_lead_provider_id"
+  end
+
   create_table "lead_provider_cips", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "lead_provider_id", null: false
     t.uuid "cohort_id", null: false
@@ -376,6 +386,7 @@ ActiveRecord::Schema.define(version: 2021_04_30_095331) do
   add_foreign_key "early_career_teacher_profiles", "schools"
   add_foreign_key "early_career_teacher_profiles", "users"
   add_foreign_key "induction_coordinator_profiles", "users"
+  add_foreign_key "lead_provider_api_tokens", "lead_providers", on_delete: :cascade
   add_foreign_key "lead_provider_cips", "cohorts"
   add_foreign_key "lead_provider_cips", "core_induction_programmes"
   add_foreign_key "lead_provider_cips", "lead_providers"
