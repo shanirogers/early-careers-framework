@@ -184,6 +184,25 @@ ActiveRecord::Schema.define(version: 2021_04_30_095331) do
     t.index ["token"], name: "index_nomination_emails_on_token", unique: true
   end
 
+  create_table "participant_events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "item_type", null: false
+    t.string "event", null: false
+    t.string "whodunnit"
+    t.json "object"
+    t.json "object_changes"
+    t.datetime "created_at"
+    t.uuid "item_id", default: -> { "gen_random_uuid()" }, null: false
+    t.index ["item_type", "item_id"], name: "index_participant_events_on_item_type_and_item_id"
+  end
+
+  create_table "participant_profiles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.uuid "early_career_teacher_profile_id", null: false
+    t.string "state", default: "assigned", null: false
+    t.index ["early_career_teacher_profile_id"], name: "index_participant_profiles_on_early_career_teacher_profile_id"
+  end
+
   create_table "partnership_notification_emails", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "token", null: false
     t.string "sent_to", null: false
@@ -364,6 +383,7 @@ ActiveRecord::Schema.define(version: 2021_04_30_095331) do
   add_foreign_key "lead_provider_profiles", "users"
   add_foreign_key "nomination_emails", "partnership_notification_emails"
   add_foreign_key "nomination_emails", "schools"
+  add_foreign_key "participant_profiles", "early_career_teacher_profiles"
   add_foreign_key "partnership_notification_emails", "partnerships"
   add_foreign_key "partnerships", "cohorts"
   add_foreign_key "partnerships", "delivery_partners"
