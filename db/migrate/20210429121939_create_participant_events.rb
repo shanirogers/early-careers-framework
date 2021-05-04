@@ -8,7 +8,7 @@ class CreateParticipantEvents < ActiveRecord::Migration[6.1]
       t.json :object_changes
       t.datetime :created_at
       t.uuid :item_id, default: -> { "gen_random_uuid()" }, null: false
-      t.index [:item_type, :item_id], name: "index_participant_events_on_item_type_and_item_id"
+      t.index %i[item_type item_id], name: "index_participant_events_on_item_type_and_item_id"
     end
   end
 end

@@ -27,7 +27,6 @@ RSpec.describe ParticipantProfile, type: :model do
       expect(@object).to transition_from(:active).to(:deferred).on_event(:defer)
       expect(@object).to transition_from(:active).to(:withdrawn).on_event(:withdraw)
       expect(@object).to transition_from(:active).to(:completed).on_event(:complete)
-
     end
 
     it "should only have expected transitions from the deferred state" do
@@ -47,7 +46,6 @@ RSpec.describe ParticipantProfile, type: :model do
       expect(@object).not_to allow_event(:join, :defer, :resume, :complete)
       expect(@object).to transition_from(:active, :deferred).to(:withdrawn).on_event(:withdraw)
     end
-
 
     it "should have no allowed transitions from the completed state" do
       @object.join

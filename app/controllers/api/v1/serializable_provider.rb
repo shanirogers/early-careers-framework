@@ -5,7 +5,6 @@ module API
 
       attributes :provider_code, :provider_name, :provider_type,
                  :latitude, :longitude
-
     end
   end
 end

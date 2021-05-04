@@ -2,7 +2,7 @@
 
 class ParticipantProfile < ApplicationRecord
   has_paper_trail versions: {
-    class_name: "ParticipantEvent"
+    class_name: "ParticipantEvent",
   }
   belongs_to :early_career_teacher_profile
 
@@ -27,7 +27,7 @@ class ParticipantProfile < ApplicationRecord
     end
 
     event :withdraw do
-      transitions from: [:active, :deferred], to: :withdrawn
+      transitions from: %i[active deferred], to: :withdrawn
     end
 
     event :complete do
