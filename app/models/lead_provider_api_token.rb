@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LeadProviderApiToken < ApplicationRecord
   belongs_to :lead_provider
 

@@ -19,7 +19,9 @@ describe Api::V1::ApplicationController, type: :controller do
     end
 
     context "when authorization header is provided" do
-      let(:bearer_token) { "Bearer tnp" }
+      let(:lead_provider) { create(:lead_provider) }
+      let(:token) { LeadProviderApiToken.create_with_random_token!(lead_provider: lead_provider) }
+      let(:bearer_token) { "Bearer #{token}" }
 
       it "requests authentication via the http header" do
         expect(response.status).to eq(200)
