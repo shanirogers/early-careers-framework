@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateParticipantEvents < ActiveRecord::Migration[6.1]
   def change
     create_table :participant_events, id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
