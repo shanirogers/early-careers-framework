@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "API Search schools", type: :request do
+RSpec.describe "API Provider Events", type: :request do
   describe "provider_events" do
     let(:parsed_response) { JSON.parse(response.body) }
 
