@@ -4,11 +4,13 @@ require "rails_helper"
 
 RSpec.describe "API Provider Events", type: :request do
   describe "provider_events" do
+    let(:lead_provider) { create(:lead_provider) }
+    let(:token) { LeadProviderApiToken.create_with_random_token!(lead_provider: lead_provider) }
+    
     let(:parsed_response) { JSON.parse(response.body) }
 
-    # TODO: configure base path /api/v1/ with swagger helper
     it "returns 201-created status" do
-      post "/api/v1/provider-events"
+      post "/api/v1/provider-events", params: {}, headers: {"Authorization": "Bearer #{token}"}
       expect(response.status).to eq 201
     end
 
