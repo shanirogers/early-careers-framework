@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApiConstraints
   def initialize(options)
     @version = options[:version]
@@ -5,6 +7,6 @@ class ApiConstraints
   end
 
   def matches?(request)
-    @default || request.headers['Accept'].include?("application/vnd.dfe.gov.uk.v#{@version}")
+    @default || request.headers["Accept"].include?("application/vnd.dfe.gov.uk.v#{@version}")
   end
 end

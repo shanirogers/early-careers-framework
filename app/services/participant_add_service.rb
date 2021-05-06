@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 class ParticipantAddService
-  public
   attr_accessor :participant_profile
 
   class << self
@@ -12,8 +13,9 @@ class ParticipantAddService
     participant_profile.join!
   end
 
-  private
+private
+
   def initialize(early_career_teacher_profile)
-    self.participant_profile=ParticipantProfile.new(early_career_teacher_profile: early_career_teacher_profile)
+    self.participant_profile = ParticipantProfile.new(early_career_teacher_profile: early_career_teacher_profile)
   end
 end
