@@ -21,6 +21,16 @@
           }
         }
       }
+    },
+    "/api/payments/v1/retention": {
+      "get": {
+        "summary": "get retention",
+        "responses": {
+          "200": {
+            "description": "successful"
+          }
+        }
+      }
     }
   }
 }

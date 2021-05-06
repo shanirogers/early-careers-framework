@@ -35,6 +35,11 @@ Rails.application.routes.draw do
     scope module: :v1, constraints: ApiConstraints.new(version: 1) do
       resources :early_career_teacher_participation, only: %i[create], path: "early-career-teacher-participation"
     end
+    namespace :payments do
+      namespace :v1 do
+        get :retention, controller: :retention, action: :get
+      end
+    end
   end
 
   namespace :demo do
