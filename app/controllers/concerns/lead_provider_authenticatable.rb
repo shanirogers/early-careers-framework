@@ -14,7 +14,7 @@ module Concerns
         if @current_lead_provider_api_token
           @current_lead_provider_api_token.update!(
             last_used_at: Time.zone.now,
-            )
+          )
         end
       end
     end

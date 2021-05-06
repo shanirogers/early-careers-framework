@@ -11,7 +11,6 @@ RSpec.xdescribe "Early Career Teacher Participation", type: :request do
         let(:id) { "1234567890" }
         run_test!
       end
-
     end
   end
 end
