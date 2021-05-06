@@ -29,10 +29,10 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :api do
+  namespace :api, defaults: {format: 'json'} do
     resources :school_search, only: %i[index]
     resource :notify_callback, only: :create, path: "notify-callback"
-    namespace :v1 do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1) do
       resources :provider_events, only: %i[create], path: "provider-events"
     end
   end
