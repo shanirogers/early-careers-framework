@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-=begin
 require "swagger_helper"
 
-RSpec.describe "Early Career Teacher Participation", type: :request do
+RSpec.xdescribe "Early Career Teacher Participation", type: :request do
   path "/early-career-teacher-participation" do
     post "Create provider event" do
       operationId :api_v1_create_ect_participant
@@ -16,4 +15,3 @@ RSpec.describe "Early Career Teacher Participation", type: :request do
     end
   end
 end
-=end
