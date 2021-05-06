@@ -10,13 +10,18 @@ RSpec.describe "API Provider Events", type: :request do
 
     let(:parsed_response) { JSON.parse(response.body) }
 
-    it "returns 201-created status" do
+    it "returns 204 when passed no content" do
       post "/api/provider-events", params: {}, headers: {"Authorization": "Bearer #{token}", "Accept": "application/vnd.dfe.gov.uk.v1"}
+      expect(response.status).to eq 204
+    end
+
+    it "returns 201-created status" do
+      post "/api/provider-events", params: { id: payload.user_id }, headers: {"Authorization": "Bearer #{token}", "Accept": "application/vnd.dfe.gov.uk.v1"}
       expect(response.status).to eq 201
     end
 
-    xit "returns 422-unprocessable-entity status for missing params" do
-      post "/api/provider-events", params: {}, headers: {"Authorization": "Bearer #{token}", "Accept": "application/vnd.dfe.gov.uk.v1"}
+    it "returns 422-unprocessable-entity status for incorrect params" do #Expectes the user uuid. Pass the early_career_teacher_profile_id
+      post "/api/provider-events", params: { id: payload.id }, headers: {"Authorization": "Bearer #{token}", "Accept": "application/vnd.dfe.gov.uk.v1"}
       expect(response.status).to eq 422
     end
   end
