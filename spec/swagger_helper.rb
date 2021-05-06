@@ -15,7 +15,7 @@ RSpec.configure do |config|
                         .map { |f| { File.basename(f, ".yaml").titleize.gsub(/\W+/, "") => YAML.safe_load(File.read(f)) } }
                         .reduce(&:merge),
       },
-      basePath: "/api/v1",
+      basePath: "/api",
     },
   }
 

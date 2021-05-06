@@ -1,22 +1,23 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Provider Events API",
+    "title": "API documentation",
     "version": "v1",
-    "description": "Auto generated doc"
+    "description": "Auto generated doc",
+    "definitions": null
   },
-  "basePath": "/api/v1",
+  "basePath": "/api",
   "paths": {
-    "/provider_events": {
+    "/early-career-teacher-participation": {
       "post": {
         "summary": "Create provider event",
-        "operationId": "api_v1_create_provider_event",
+        "operationId": "api_v1_create_ect_participant",
         "tags": [
           "provider events"
         ],
         "responses": {
-          "201": {
-            "description": "successful"
+          "422": {
+            "description": "unprocessable_entity"
           }
         }
       }

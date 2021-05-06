@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     resources :school_search, only: %i[index]
     resource :notify_callback, only: :create, path: "notify-callback"
     scope module: :v1, constraints: ApiConstraints.new(version: 1) do
-      resources :provider_events, only: %i[create], path: "provider-events"
+      resources :early_career_teacher_participation, only: %i[create], path: "early-career-teacher-participation"
     end
   end
 

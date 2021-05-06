@@ -2,7 +2,11 @@
 
 require "rails_helper"
 
-describe Api::V1::ApplicationController, type: :controller do
+class DummyController < Api::ApiController
+  include Api::Concerns::LeadProviderAuthenticatable
+end
+
+describe DummyController, type: :controller do
   describe "#authenticate" do
     before do
       controller.response              = response
