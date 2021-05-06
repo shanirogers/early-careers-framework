@@ -9,7 +9,7 @@ class Api::V1::ProviderEventsController < Api::V1::ApplicationController
       early_career_teacher = user.early_career_teacher_profile
       ParticipantAddService.call(early_career_teacher)
       head :created
-    rescue RecordNotFound
+    rescue ActiveRecord::RecordNotFound
       head :unprocessable_entity
     end
   end
