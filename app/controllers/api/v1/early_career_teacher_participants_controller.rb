@@ -4,18 +4,17 @@ module Api
   module V1
     class EarlyCareerTeacherParticipantsController < Api::ApiController
       include LeadProviderAuthenticatable
+      alias_method :current_user, :current_lead_provider
+      before_action :set_paper_trail_whodunnit
 
+      public
       def create
-        return head :no_content unless params[:id]
+        return head :not_found unless params[:id]
 
-        begin
-          user = User.find(params[:id])
-          early_career_teacher = user.early_career_teacher_profile
-          ParticipantAddService.call(early_career_teacher)
-          head :created
-        rescue ActiveRecord::RecordNotFound
-          head :unprocessable_entity
-        end
+        user = User.find(params[:id])
+        early_career_teacher = user.early_career_teacher_profile
+        ParticipantAddService.call(early_career_teacher)
+        head :created
       end
     end
   end

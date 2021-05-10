@@ -16,9 +16,9 @@ RSpec.describe "Early Career Teacher Participants", type: :request do
         default_headers[:Authorization] = bearer_token
       end
 
-      it "returns 204 when passed no content" do
+      it "returns 404 when trying to create with no content" do
         post "/api/v1/early-career-teacher-participants", params: {}
-        expect(response.status).to eq 204
+        expect(response.status).to eq 404
       end
 
       it "returns 201-created status" do
@@ -26,9 +26,9 @@ RSpec.describe "Early Career Teacher Participants", type: :request do
         expect(response.status).to eq 201
       end
 
-      it "returns 422-unprocessable-entity status for incorrect params" do # Expectes the user uuid. Pass the early_career_teacher_profile_id
+      it "returns 404 when trying to create for an invalid user id" do # Expectes the user uuid. Pass the early_career_teacher_profile_id
         post "/api/v1/early-career-teacher-participants", params: { id: payload.id }
-        expect(response.status).to eq 422
+        expect(response.status).to eq 404
       end
     end
 

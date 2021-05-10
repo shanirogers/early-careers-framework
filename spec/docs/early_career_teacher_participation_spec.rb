@@ -25,12 +25,7 @@ RSpec.describe "Early Career Teacher Participation", type: :request do
         run_test!
       end
 
-      response "204", "No Content" do
-        run_test!
-      end
-
-      response 422, "Unprocessable Entity" do
-        let(:params) { { "id" => 1234 } }
+      response "404", "Not Found" do
         run_test!
       end
 

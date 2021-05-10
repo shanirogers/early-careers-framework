@@ -27,11 +27,8 @@
           "201": {
             "description": "Successful"
           },
-          "204": {
-            "description": "No Content"
-          },
-          "422": {
-            "description": "Unprocessable Entity"
+          "404": {
+            "description": "Not Found"
           },
           "401": {
             "description": "Unauthorized"

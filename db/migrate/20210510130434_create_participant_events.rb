@@ -2,7 +2,7 @@
 
 class CreateParticipantEvents < ActiveRecord::Migration[6.1]
   def change
-    create_table :participant_events, id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    create_table :participant_events, id: :uuid do |t|
       t.string :item_type, null: false
       t.string :event, null: false
       t.string :whodunnit
@@ -10,7 +10,7 @@ class CreateParticipantEvents < ActiveRecord::Migration[6.1]
       t.json :object_changes
       t.datetime :created_at
       t.uuid :item_id, default: -> { "gen_random_uuid()" }, null: false
-      t.index %i[item_type item_id], name: "index_participant_events_on_item_type_and_item_id"
+      t.index %i[item_type item_id]
     end
   end
 end

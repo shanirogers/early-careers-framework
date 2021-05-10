@@ -13,6 +13,7 @@ class ParticipantProfile < ApplicationRecord
   aasm do
     state :assigned, initial: true
     state :active, :deferred, :withdrawn, :completed
+    before_all_events :before_all_events
 
     event :join do
       transitions from: :assigned, to: :active
@@ -33,9 +34,10 @@ class ParticipantProfile < ApplicationRecord
     event :complete do
       transitions from: :active, to: :completed
     end
-
-    def before_all_events
-      self.paper_trail_event = aasm.current_event
-    end
   end
+
+  def before_all_events
+    self.paper_trail_event = aasm.current_event
+  end
+
 end
