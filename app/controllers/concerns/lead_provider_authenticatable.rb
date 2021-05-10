@@ -2,6 +2,7 @@
 
 module LeadProviderAuthenticatable
   extend ActiveSupport::Concern
+  include ActionController::HttpAuthentication::Token::ControllerMethods
 
   included do
     before_action :authenticate
