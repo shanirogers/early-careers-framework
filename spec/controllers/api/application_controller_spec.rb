@@ -11,7 +11,6 @@ describe DummyController, type: :controller do
     before do
       controller.response              = response
       request.headers["Authorization"] = bearer_token
-      request.headers["Accept"]        = "application/vnd.gov.uk.v1"
       controller.authenticate
     end
 
