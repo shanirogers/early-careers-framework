@@ -3,11 +3,48 @@
   "info": {
     "title": "API documentation",
     "version": "v1",
-    "description": "Auto generated doc",
+    "description": "Auto generated document, run `bundle exec rake rswag` to regenerate",
     "definitions": null
   },
   "basePath": "/api/v1",
   "paths": {
+    "/early-career-teacher-participants": {
+      "post": {
+        "summary": "Add Early Career Teacher to Course",
+        "operationId": "api_v1_create_ect_participant",
+        "tags": [
+          "ect_participant"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "description": "The bearer token associated with a lead provider"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "description": "The version of the current API"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
     "/users": {
       "get": {
         "summary": "Returns all users",

@@ -1,4 +1,8 @@
 # frozen_string_literal: true
 
-class Api::ApiController < ActionController::API
+module Api
+  class ApiController < ActionController::API
+    include ActionController::HttpAuthentication::Token::ControllerMethods
+    include Pundit
+  end
 end

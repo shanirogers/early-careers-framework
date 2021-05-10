@@ -10,7 +10,7 @@ RSpec.configure do |config|
       info: {
         title: "API documentation",
         version: "v1",
-        description: "Auto generated doc",
+        description: "Auto generated document, run `bundle exec rake rswag` to regenerate",
         definitions: Dir[Rails.root.join("spec/docs/schemas/*.yaml")]
                         .map { |f| { File.basename(f, ".yaml").titleize.gsub(/\W+/, "") => YAML.safe_load(File.read(f)) } }
                         .reduce(&:merge),
