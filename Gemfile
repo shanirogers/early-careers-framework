@@ -123,7 +123,7 @@ group :development do
   gem "spring-watcher-listen", "~> 2.0.0"
 
   # State machine diagrams - https://github.com/Katee/aasm-diagram
-  gem 'aasm-diagram'
+  gem "aasm-diagram"
 end
 
 group :test do
