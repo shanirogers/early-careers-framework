@@ -3,6 +3,11 @@
 namespace :lead_provider do
   desc "creates API token for lead provider ID parameter"
   task generate_token: :environment do
+    logger = Logger.new($stdout)
+    logger.formatter = proc do |_severity, _datetime, _progname, msg|
+      "#{msg}\n"
+    end
+
     begin
       lead_provider = LeadProvider.find(ARGV[1])
     rescue StandardError
@@ -10,20 +15,10 @@ namespace :lead_provider do
     end
     token = LeadProviderApiToken.create_with_random_token!(lead_provider: lead_provider)
 
-    log "Generated API token for lead provider (#{lead_provider.id}): #{token}"
+    logger.info "Generated API token for lead provider (#{lead_provider.id}): #{token}"
   rescue StandardError
-    log "Lead provider for '#{ARGV[1]}' not found"
+    logger.info "Lead provider for '#{ARGV[1]}' not found"
   ensure
     exit(0)
-  end
-
-  private
-
-  def log(msg)
-    logger = Logger.new($stdout)
-    logger.formatter = proc do |severity, datetime, progname, msg|
-      "#{msg}\n"
-    end
-    logger.info msg
   end
 end
