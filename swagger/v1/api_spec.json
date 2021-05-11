@@ -31,12 +31,6 @@
             "in": "header",
             "required": false,
             "description": "The bearer token associated with a lead provider"
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "description": "The version of the current API"
           }
         ],
         "responses": {
