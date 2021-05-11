@@ -39,5 +39,4 @@ class ParticipantProfile < ApplicationRecord
   def before_all_events
     self.paper_trail_event = aasm.current_event
   end
-
 end

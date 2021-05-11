@@ -7,7 +7,6 @@ module Api
       alias_method :current_user, :current_lead_provider
       before_action :set_paper_trail_whodunnit
 
-      public
       def create
         return head :not_found unless params[:id]
 

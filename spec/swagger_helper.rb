@@ -22,11 +22,11 @@ RSpec.configure do |config|
             description: "Lead Provider token",
             type: :apiKey,
             name: "Authorization",
-            in: :header
+            in: :header,
           },
 
-        }
-      }
+        },
+      },
     },
   }
 
