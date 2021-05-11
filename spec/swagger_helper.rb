@@ -16,6 +16,17 @@ RSpec.configure do |config|
                         .reduce(&:merge),
       },
       basePath: "/api/v1",
+      components: {
+        securitySchemes: {
+          bearer: {
+            description: "Lead Provider token",
+            type: :apiKey,
+            name: "Authorization",
+            in: :header
+          },
+
+        }
+      }
     },
   }
 

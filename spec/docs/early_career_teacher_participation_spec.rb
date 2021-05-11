@@ -18,6 +18,7 @@ RSpec.describe "Early Career Teacher Participation", type: :request do
       tags "ect_participant"
       consumes "application/json"
       parameter name: "Authorization", in: :header, required: false, type: :string, description: "The bearer token associated with a lead provider"
+      parameter name: "Accept", in: :header, required: false, type: :string, description: "The version of the current API"
       parameter name: :params, in: :body, required: false, type: :string, description: "The unique id of the participant"
 
       response 201, "Successful" do
