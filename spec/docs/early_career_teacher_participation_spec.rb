@@ -2,22 +2,19 @@
 
 require "swagger_helper"
 
-RSpec.describe "Early Career Teacher Participation", type: :request do
+RSpec.describe "Early Career Teacher Participation", type: :request, swagger_doc: "v1/api_spec.json" do
   let(:user) { create(:user) }
   let(:lead_provider) { create(:lead_provider) }
   let(:token) { LeadProviderApiToken.create_with_random_token!(lead_provider: lead_provider) }
   let(:bearer_token) { "Bearer #{token}" }
+  let(:Authorization) { bearer_token }
 
-  before do
-    default_headers[:Authorization] = bearer_token
-  end
-
-  path "/early-career-teacher-participants" do
+  path "/api/v1/early-career-teacher-participants" do
     post "Add Early Career Teacher to Course" do
       operationId :api_v1_create_ect_participant
       tags "ect_participant"
       consumes "application/json"
-      parameter name: "Authorization", in: :header, required: false, type: :string, description: "The bearer token associated with a lead provider"
+      security [bearerAuth: []]
       parameter name: :params, in: :body, required: false, type: :string, description: "The unique id of the participant"
 
       response 201, "Successful" do

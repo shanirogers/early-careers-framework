@@ -1,37 +1,59 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.1",
   "info": {
     "title": "API documentation",
     "version": "v1",
-    "description": "Auto generated document, run `bundle exec rake rswag` to regenerate",
-    "definitions": null
+    "description": "Auto generated document, run `bundle exec rake rswag` to regenerate"
   },
-  "basePath": "/api/v1",
   "components": {
     "securitySchemes": {
-      "bearer": {
-        "description": "Lead Provider token",
-        "type": "apiKey",
-        "name": "Authorization",
-        "in": "header"
+      "bearerAuth": {
+        "bearerFormat": "string",
+        "type": "http",
+        "scheme": "bearer"
       }
     }
   },
+  "security": [
+    {
+      "bearerAuth": [
+
+      ]
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://{defaultHost}/api/{version}",
+      "variables": {
+        "defaultHost": {
+          "default": "ecf-dev.london.cloudapps.digital"
+        },
+        "version": {
+          "enum": [
+            "v1"
+          ],
+          "default": "v1"
+        }
+      }
+    }
+  ],
   "paths": {
-    "/early-career-teacher-participants": {
+    "/api/v1/early-career-teacher-participants": {
       "post": {
         "summary": "Add Early Career Teacher to Course",
         "operationId": "api_v1_create_ect_participant",
         "tags": [
           "ect_participant"
         ],
-        "parameters": [
+        "security": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "required": false,
-            "description": "The bearer token associated with a lead provider"
+            "bearerAuth": [
+
+            ]
           }
+        ],
+        "parameters": [
+
         ],
         "responses": {
           "201": {
@@ -42,46 +64,6 @@
           },
           "401": {
             "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/users": {
-      "get": {
-        "summary": "Returns all users",
-        "operationId": "public_api_v1_user_index",
-        "tags": [
-          "user"
-        ],
-        "responses": {
-          "200": {
-            "description": "Collection of users.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "users": {
-                  "type": "array",
-                  "items": {
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "email": {
-                        "type": "string"
-                      },
-                      "full_name": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "id",
-                      "email",
-                      "full_name"
-                    ]
-                  }
-                }
-              }
-            }
           }
         }
       }

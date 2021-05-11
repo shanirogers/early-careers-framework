@@ -11,12 +11,12 @@ RSpec.describe "API Users", type: :request do
     end
 
     it "returns all users in 'users' field" do
-      get "/api/v1/users"
+      get "/api/public/v1/users"
       expect(parsed_response["users"].count).to eq 10
     end
 
     it "returns only id, email and full name" do
-      get "/api/v1/users"
+      get "/api/public/v1/users"
       expect(parsed_response["users"][0].keys).to contain_exactly("id", "full_name", "email")
     end
   end

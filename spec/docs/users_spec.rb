@@ -2,8 +2,8 @@
 
 require "swagger_helper"
 
-describe "API", type: :request do
-  path "/users" do
+describe "API", type: :request, swagger_doc: "public_v1/api_spec.json" do
+  path "/api/public/v1/users" do
     get "Returns all users" do
       operationId :public_api_v1_user_index
       tags "user"

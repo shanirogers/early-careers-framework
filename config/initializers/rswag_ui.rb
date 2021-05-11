@@ -8,4 +8,5 @@ OpenApi::Rswag::Ui.configure do |c|
   # then the list below should correspond to the relative paths for those endpoints
 
   c.swagger_endpoint "/api-docs/v1/api_spec.json", "API V1 Docs"
+  c.swagger_endpoint "/api-docs/public_v1/api_spec.json", "API Public V1 Docs"
 end

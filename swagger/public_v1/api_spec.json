@@ -1,0 +1,66 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API documentation",
+    "version": "v1",
+    "description": "Auto generated document, run `bundle exec rake rswag` to regenerate"
+  },
+  "servers": [
+    {
+      "url": "https://{defaultHost}/api/public/{version}",
+      "variables": {
+        "defaultHost": {
+          "default": "ecf-dev.london.cloudapps.digital"
+        },
+        "version": {
+          "enum": [
+            "v1"
+          ],
+          "default": "v1"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/api/public/v1/users": {
+      "get": {
+        "summary": "Returns all users",
+        "operationId": "public_api_v1_user_index",
+        "tags": [
+          "user"
+        ],
+        "responses": {
+          "200": {
+            "description": "Collection of users.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "users": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "full_name": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "email",
+                      "full_name"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
