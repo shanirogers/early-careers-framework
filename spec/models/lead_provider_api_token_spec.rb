@@ -8,6 +8,6 @@ RSpec.describe LeadProviderApiToken, type: :model do
 
     expect(
       LeadProviderApiToken.find_by_unhashed_token(unhashed_token),
-    ).to eql(LeadProviderApiToken.last)
+    ).to eql(LeadProviderApiToken.order(:created_at).last)
   end
 end
