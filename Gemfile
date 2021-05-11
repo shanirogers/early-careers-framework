@@ -19,6 +19,8 @@ gem "kaminari", ">= 1.2.0"
 # Adds health check functionality
 gem "health_check", github: "/ianheggie/health_check", ref: "0b799ead604f900ed50685e9b2d469cd2befba5b"
 
+gem "secure_headers"
+
 # Cleaner logs, one line per request
 gem "lograge", ">= 0.11.2"
 gem "logstash-event"
