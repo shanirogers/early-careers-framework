@@ -1,5 +1,12 @@
 # frozen_string_literal: true
 
+##
+# Current state of participants (teachers and mentors), i.e. users on a course (ECF or NPQ).
+#
+# Transition history is recorded by `paper_trail`.
+#
+# You can generate a state diagram with `bundle exec rake aasm-diagram:generate[participant_profile]`
+# The generated diagram goes into the `tmp/` folder of the repo. See https://github.com/Katee/aasm-diagram
 class ParticipantProfile < ApplicationRecord
   has_paper_trail versions: {
     class_name: "ParticipantEvent",

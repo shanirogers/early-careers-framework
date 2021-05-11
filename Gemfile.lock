@@ -11,6 +11,9 @@ GEM
   specs:
     aasm (5.2.0)
       concurrent-ruby (~> 1.0)
+    aasm-diagram (0.1.3)
+      aasm (~> 5.0, >= 4.12)
+      ruby-graphviz (~> 1.2)
     actioncable (6.1.3.2)
       actionpack (= 6.1.3.2)
       activesupport (= 6.1.3.2)
@@ -360,6 +363,8 @@ GEM
       rubocop
     rubocop-rspec (1.42.0)
       rubocop (>= 0.87.0)
+    ruby-graphviz (1.2.5)
+      rexml
     ruby-progressbar (1.11.0)
     rubyzip (2.3.0)
     sass (3.7.4)
@@ -445,6 +450,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
+  aasm-diagram
   ar-uuid (~> 0.2.1)
   aws-sdk-s3
   blueprinter
