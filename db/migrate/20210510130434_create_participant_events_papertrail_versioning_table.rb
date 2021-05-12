@@ -9,7 +9,7 @@ class CreateParticipantEvents < ActiveRecord::Migration[6.1]
       t.json :object
       t.json :object_changes
       t.datetime :created_at
-      t.bigint :item_id, null: false
+      t.uuid :item_id, null: false
       t.index %i[item_type item_id]
     end
   end
