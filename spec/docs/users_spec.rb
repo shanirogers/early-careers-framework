@@ -2,28 +2,38 @@
 
 require "swagger_helper"
 
-describe "API", type: :request do
+RSpec.describe "API", type: :request do
   path "/users" do
     get "Returns all users" do
       operationId :public_api_v1_user_index
       tags "user"
-      produces "application/json"
+      produces "application/vnd.api+json"
 
       response "200", "Collection of users." do
         schema type: :object,
+               required: %w[data],
                properties: {
-                 users: {
+                 data: {
                    type: :array,
                    items: {
+                     type: :object,
+                     required: %w[id type attributes],
                      properties: {
                        id: { type: :string },
-                       email: { type: :string },
-                       full_name: { type: :string },
+                       type: { type: :string },
+                       attributes: {
+                         type: :object,
+                         required: %w[email full_name],
+                         properties: {
+                           email: { type: :string },
+                           full_name: { type: :string },
+                         },
+                       },
                      },
-                     required: %w[id email full_name],
                    },
                  },
                }
+
         run_test!
       end
     end

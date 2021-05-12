@@ -42,6 +42,8 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.include JSONAPI::RSpec
+
   config.before do
     Faker::Number.unique.clear
   end

@@ -73,6 +73,8 @@ gem "daemons"
 gem "delayed_cron_job"
 gem "delayed_job_active_record"
 
+gem "jsonapi-serializer"
+
 # OpenApi Swagger
 gem "open_api-rswag-api", ">= 0.1.0"
 gem "open_api-rswag-ui", ">= 0.1.0"
