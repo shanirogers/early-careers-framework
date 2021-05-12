@@ -7,7 +7,7 @@
 #
 # You can generate a state diagram with `bundle exec rake aasm-diagram:generate[participant_profile]`
 # The generated diagram goes into the `tmp/` folder of the repo. See https://github.com/Katee/aasm-diagram
-class ParticipantProfile < ApplicationRecord
+class ParticipationRecord < ApplicationRecord
   has_paper_trail versions: {
     class_name: "ParticipantEvent",
   }

@@ -16,6 +16,6 @@ class InductParticipant
 private
 
   def initialize(early_career_teacher_profile)
-    self.participant_profile = ParticipantProfile.new(early_career_teacher_profile: early_career_teacher_profile)
+    self.participant_profile = ParticipationRecord.new(early_career_teacher_profile: early_career_teacher_profile)
   end
 end
