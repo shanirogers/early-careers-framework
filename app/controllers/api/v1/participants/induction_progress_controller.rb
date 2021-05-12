@@ -14,7 +14,7 @@ module Api
           user = User.find(params[:id])
           early_career_teacher = user.early_career_teacher_profile
           InductParticipant.call(early_career_teacher)
-          head :created
+          head :no_content
         end
       end
     end

@@ -21,9 +21,9 @@ RSpec.describe "Early Career Teacher Participants", type: :request do
         expect(response.status).to eq 404
       end
 
-      it "returns 201-created status" do
+      it "returns 204 status" do
         post "/api/v1/participants/induction-progress", params: { id: payload.user_id }
-        expect(response.status).to eq 201
+        expect(response.status).to eq 204
       end
 
       it "returns 404 when trying to create for an invalid user id" do # Expectes the user uuid. Pass the early_career_teacher_profile_id

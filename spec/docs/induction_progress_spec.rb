@@ -17,7 +17,7 @@ RSpec.describe "Induction Progress", type: :request, swagger_doc: "v1/api_spec.j
       security [bearerAuth: []]
       parameter name: :params, in: :body, required: false, type: :string, description: "The unique id of the participant"
 
-      response 201, "Successful" do
+      response 204, "Successful" do
         let(:params) { { "id" => user.id } }
         run_test!
       end
