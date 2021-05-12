@@ -10,7 +10,7 @@ RSpec.configure do |config|
       info: {
         title: "API documentation",
         version: "v1",
-        description: "Auto generated document, run `bundle exec rake rswag` to regenerate",
+        description: "API for DfE's participant induction service",
       },
       components: {
         securitySchemes: {
@@ -46,11 +46,11 @@ RSpec.configure do |config|
       info: {
         title: "API documentation",
         version: "v1",
-        description: "Auto generated document, run `bundle exec rake rswag` to regenerate",
+        description: "API for DfE's early career framework",
       },
       servers: [
         {
-          url: "https://{defaultHost}/api/public/{version}",
+          url: "http://{defaultHost}/api/public/{version}",
           variables: {
             defaultHost: {
               default: "ecf-dev.london.cloudapps.digital",

@@ -3,7 +3,7 @@
   "info": {
     "title": "API documentation",
     "version": "v1",
-    "description": "Auto generated document, run `bundle exec rake rswag` to regenerate"
+    "description": "API for DfE's participant induction service"
   },
   "components": {
     "securitySchemes": {
@@ -38,12 +38,13 @@
     }
   ],
   "paths": {
-    "/api/v1/early-career-teacher-participants": {
+    "/api/v1/induction-progress": {
       "post": {
-        "summary": "Add Early Career Teacher to Course",
+        "summary": "Submit induction progress for a participant",
         "operationId": "api_v1_create_ect_participant",
         "tags": [
-          "ect_participant"
+          "participant",
+          "induction progress"
         ],
         "security": [
           {
