@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ParticipantAddService
+class InductParticipant
   attr_accessor :participant_profile
 
   class << self
