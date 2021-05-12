@@ -9,7 +9,7 @@ RSpec.describe "Induction Progress", type: :request, swagger_doc: "v1/api_spec.j
   let(:bearer_token) { "Bearer #{token}" }
   let(:Authorization) { bearer_token }
 
-  path "/api/v1/induction-progress" do
+  path "/api/v1/participants/induction-progress" do
     post "Submit induction progress for a participant" do
       operationId :api_v1_create_ect_participant
       tags "induction progress"

@@ -38,7 +38,7 @@
     }
   ],
   "paths": {
-    "/api/v1/induction-progress": {
+    "/api/v1/participants/induction-progress": {
       "post": {
         "summary": "Submit induction progress for a participant",
         "operationId": "api_v1_create_ect_participant",

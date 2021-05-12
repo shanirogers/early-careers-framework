@@ -34,7 +34,9 @@ Rails.application.routes.draw do
     resource :notify_callback, only: :create, path: "notify-callback"
 
     namespace :v1 do
-      resources :induction_progress, only: %i[create], path: "induction-progress"
+      namespace :participants do
+        resources :induction_progress, only: %i[create], path: "induction-progress"
+      end
     end
 
     namespace :public do
