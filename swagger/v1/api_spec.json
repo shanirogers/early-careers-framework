@@ -56,7 +56,7 @@
 
         ],
         "responses": {
-          "201": {
+          "204": {
             "description": "Successful"
           },
           "404": {
