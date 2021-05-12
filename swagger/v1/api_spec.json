@@ -43,7 +43,6 @@
         "summary": "Submit induction progress for a participant",
         "operationId": "api_v1_create_ect_participant",
         "tags": [
-          "participant",
           "induction progress"
         ],
         "security": [

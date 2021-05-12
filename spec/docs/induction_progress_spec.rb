@@ -12,7 +12,7 @@ RSpec.describe "Induction Progress", type: :request, swagger_doc: "v1/api_spec.j
   path "/api/v1/induction-progress" do
     post "Submit induction progress for a participant" do
       operationId :api_v1_create_ect_participant
-      tags "participant", "induction progress"
+      tags "induction progress"
       consumes "application/json"
       security [bearerAuth: []]
       parameter name: :params, in: :body, required: false, type: :string, description: "The unique id of the participant"
