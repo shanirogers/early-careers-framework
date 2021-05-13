@@ -37,12 +37,7 @@ Rails.application.routes.draw do
       namespace :participants do
         resources :induction_progress, only: %i[create], path: "induction-progress"
       end
-    end
-
-    namespace :public do
-      namespace :v1 do
-        resources :users, only: :index unless Rails.env.staging? || Rails.env.production?
-      end
+      resources :users, only: :index unless Rails.env.staging? || Rails.env.production?
     end
   end
 

@@ -41,30 +41,6 @@ RSpec.configure do |config|
         },
       ],
     },
-    "public_v1/api_spec.json" => {
-      openapi: "3.0.1",
-      info: {
-        title: "API documentation",
-        version: "v1",
-        description: "API for DfE's early career framework",
-      },
-      servers: [
-        {
-          url: "http://{defaultHost}/api/public/{version}",
-          variables: {
-            defaultHost: {
-              default: "ecf-dev.london.cloudapps.digital",
-            },
-            version: {
-              enum: %w[
-                v1
-              ],
-              default: "v1",
-            },
-          },
-        },
-      ],
-    },
   }
   config.swagger_format = :json
 end
